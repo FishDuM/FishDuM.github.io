@@ -755,6 +755,54 @@ body.light-theme #contact p a:hover {
     color: #333;
 }
 
+/* 可复制文本样式 */
+.copyable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copyable:hover {
+    transform: scale(1.02);
+}
+
+/* 复制成功提示框 */
+.copy-success {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    animation: breathe-white 2s ease-in-out infinite;
+}
+
+body.light-theme .copy-success {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: breathe-gray 2s ease-in-out infinite;
+}
+
+.copy-success.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.copy-success.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
 footer {
     background-color: #000;
     color: #fff;

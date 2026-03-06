@@ -537,4 +537,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化打字机效果
     typeWriter();
+    
+    // 复制功能
+    const copyableElements = document.querySelectorAll('.copyable');
+    const copySuccess = document.getElementById('copySuccess');
+    
+    copyableElements.forEach(element => {
+        element.addEventListener('click', function() {
+            const text = this.getAttribute('data-text');
+            copyToClipboard(text);
+            showCopySuccess();
+        });
+    });
+    
+    // 复制到剪贴板
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                console.log('Copied to clipboard:', text);
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    }
+    
+    // 显示复制成功提示
+    function showCopySuccess() {
+        copySuccess.classList.remove('hide');
+        copySuccess.classList.add('show');
+        
+        // 2秒后隐藏提示框
+        setTimeout(() => {
+            copySuccess.classList.remove('show');
+            copySuccess.classList.add('hide');
+        }, 2000);
+    }
 });
