@@ -740,6 +740,21 @@ body.light-theme .projects-container::-webkit-scrollbar-thumb:hover {
     font-size: 1.1rem;
 }
 
+#contact p a {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#contact p a:hover {
+    color: #666;
+}
+
+body.light-theme #contact p a:hover {
+    color: #333;
+}
+
 footer {
     background-color: #000;
     color: #fff;
