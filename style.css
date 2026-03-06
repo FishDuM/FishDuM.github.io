@@ -157,6 +157,10 @@ body.light-theme .danmaku-item {
     animation: breathe-white 2s ease-in-out infinite;
 }
 
+.theme-toggle i {
+    font-size: 24px;
+}
+
 .language-container {
     position: absolute;
     top: 80px;

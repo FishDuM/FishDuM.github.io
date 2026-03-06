@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const languageToggle = document.getElementById('language-toggle');
     const languageContainer = document.querySelector('.language-container');
     const languageOptions = document.querySelectorAll('.language-option');
+    let currentLang = 'zh-cn'; // 默认语言
     
     // 多语言内容
     const translations = {
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
             email: '邮箱: fish.java.react@gmail.com',
             github: 'GitHub: https://github.com/FishDuM',
             qq: 'QQ：3057433102',
-            friendLink: '友联：',
+            friendLink: '友链：',
             friendName: '大星科技',
             footer: '© 2026 会飞的鱼. All rights reserved.',
             danmaku: [
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             email: '電郵: fish.java.react@gmail.com',
             github: 'GitHub: https://github.com/FishDuM',
             qq: 'QQ：3057433102',
-            friendLink: '友聯：',
+            friendLink: '友鏈：',
             friendName: '大星科技',
             footer: '© 2026 會飛的魚. All rights reserved.',
             danmaku: [
@@ -217,6 +218,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function changeLanguage(lang) {
         const translation = translations[lang];
         if (!translation) return;
+        
+        // 更新当前语言
+        currentLang = lang;
         
         // 更新页面内容（除了 h1，因为它需要特殊处理）
         document.title = translation.title;
@@ -366,6 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
     
     // 滚动时的动画效果
+    let headerVisible = true;
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset;
         const header = document.querySelector('header');
@@ -412,9 +417,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 当滚动超过200px时，隐藏header
         if (scrollTop > 200) {
-            header.style.opacity = '0';
+            if (headerVisible) {
+                header.style.opacity = '0';
+                headerVisible = false;
+            }
         } else {
-            header.style.opacity = '1';
+            if (!headerVisible) {
+                header.style.opacity = '1';
+                headerVisible = true;
+                // 重新初始化弹幕，确保使用当前选择的语言
+                initDanmaku();
+            }
         }
     });
     
@@ -430,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // 创建弹幕
-        function createDanmaku(danmakuTexts = translations['zh-cn'].danmaku) {
+        function createDanmaku(danmakuTexts = translations[currentLang].danmaku) {
             const danmakuCount = getDanmakuCount();
             
             // 清空现有弹幕
