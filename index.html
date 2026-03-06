@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>会飞的鱼 - Java后端开发者</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+<body>
+    <header>
+        <button id="theme-toggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <div class="language-container">
+            <button id="language-toggle" class="theme-toggle">
+                <i class="fas fa-language"></i>
+            </button>
+            <div class="language-options" id="languageOptions">
+                <div class="language-option" data-lang="zh-cn">普通话</div>
+                <div class="language-option" data-lang="zh">广东话</div>
+                <div class="language-option" data-lang="en">英语</div>
+                <div class="language-option" data-lang="ja">日语</div>
+            </div>
+        </div>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="会飞的鱼">
+            </div>
+            <h1>会飞的鱼</h1>
+            <p>Java后端开发者</p>
+        </div>
+        <div class="bubble left-bubble">
+            <p>我是会飞的鱼，一名Java后端开发者，热爱编写高质量、可维护的代码。</p>
+        </div>
+        <div class="bubble right-bubble">
+            <p>拥有丰富的后端开发经验，熟悉Spring Boot、Spring Cloud等主流框架，致力于构建可靠、高效的企业级应用。</p>
+        </div>
+        <div class="danmaku-container">
+            <div class="danmaku-track" id="danmakuTrack"></div>
+        </div>
+    </header>
+    
+    <main>
+    
+    <section id="skills">
+        <div class="container">
+            <h2>我的技术栈</h2>
+            <div class="skills-container">
+                <div class="skills-row" id="row1">
+                    <div class="skills-scroll scroll-left" id="scrollLeft">
+                        <div class="skill-item java">
+                            <i class="fas fa-coffee"></i>
+                            <h3>java</h3>
+                        </div>
+                        <div class="skill-item spring">
+                            <i class="fas fa-leaf"></i>
+                            <h3>spring</h3>
+                        </div>
+                        <div class="skill-item mybatis">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis</h3>
+                        </div>
+                        <div class="skill-item mybatis-plus">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis-plus</h3>
+                        </div>
+                        <div class="skill-item springboot">
+                            <i class="fas fa-rocket"></i>
+                            <h3>springboot</h3>
+                        </div>
+                        <div class="skill-item springcloud">
+                            <i class="fas fa-cloud"></i>
+                            <h3>springcloud</h3>
+                        </div>
+                        <div class="skill-item mysql">
+                            <i class="fas fa-database"></i>
+                            <h3>mysql</h3>
+                        </div>
+                        <div class="skill-item redis">
+                            <i class="fas fa-bolt"></i>
+                            <h3>redis</h3>
+                        </div>
+                        <div class="skill-item html">
+                            <i class="fab fa-html5"></i>
+                            <h3>html</h3>
+                        </div>
+                        <div class="skill-item css">
+                            <i class="fab fa-css3-alt"></i>
+                            <h3>css</h3>
+                        </div>
+                        <div class="skill-item js">
+                            <i class="fab fa-js-square"></i>
+                            <h3>js</h3>
+                        </div>
+                        <div class="skill-item vue">
+                            <i class="fab fa-vuejs"></i>
+                            <h3>vue</h3>
+                        </div>
+                        <div class="skill-item react">
+                            <i class="fab fa-react"></i>
+                            <h3>react</h3>
+                        </div>
+                        <div class="skill-item java">
+                            <i class="fas fa-coffee"></i>
+                            <h3>java</h3>
+                        </div>
+                        <div class="skill-item spring">
+                            <i class="fas fa-leaf"></i>
+                            <h3>spring</h3>
+                        </div>
+                        <div class="skill-item mybatis">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis</h3>
+                        </div>
+                        <div class="skill-item mybatis-plus">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis-plus</h3>
+                        </div>
+                        <div class="skill-item springboot">
+                            <i class="fas fa-rocket"></i>
+                            <h3>springboot</h3>
+                        </div>
+                        <div class="skill-item springcloud">
+                            <i class="fas fa-cloud"></i>
+                            <h3>springcloud</h3>
+                        </div>
+                        <div class="skill-item mysql">
+                            <i class="fas fa-database"></i>
+                            <h3>mysql</h3>
+                        </div>
+                        <div class="skill-item redis">
+                            <i class="fas fa-bolt"></i>
+                            <h3>redis</h3>
+                        </div>
+                        <div class="skill-item html">
+                            <i class="fab fa-html5"></i>
+                            <h3>html</h3>
+                        </div>
+                        <div class="skill-item css">
+                            <i class="fab fa-css3-alt"></i>
+                            <h3>css</h3>
+                        </div>
+                        <div class="skill-item js">
+                            <i class="fab fa-js-square"></i>
+                            <h3>js</h3>
+                        </div>
+                        <div class="skill-item vue">
+                            <i class="fab fa-vuejs"></i>
+                            <h3>vue</h3>
+                        </div>
+                        <div class="skill-item react">
+                            <i class="fab fa-react"></i>
+                            <h3>react</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-row" id="row2">
+                    <div class="skills-scroll scroll-right" id="scrollRight">
+                        <div class="skill-item java">
+                            <i class="fas fa-coffee"></i>
+                            <h3>java</h3>
+                        </div>
+                        <div class="skill-item spring">
+                            <i class="fas fa-leaf"></i>
+                            <h3>spring</h3>
+                        </div>
+                        <div class="skill-item mybatis">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis</h3>
+                        </div>
+                        <div class="skill-item mybatis-plus">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis-plus</h3>
+                        </div>
+                        <div class="skill-item springboot">
+                            <i class="fas fa-rocket"></i>
+                            <h3>springboot</h3>
+                        </div>
+                        <div class="skill-item springcloud">
+                            <i class="fas fa-cloud"></i>
+                            <h3>springcloud</h3>
+                        </div>
+                        <div class="skill-item mysql">
+                            <i class="fas fa-database"></i>
+                            <h3>mysql</h3>
+                        </div>
+                        <div class="skill-item redis">
+                            <i class="fas fa-bolt"></i>
+                            <h3>redis</h3>
+                        </div>
+                        <div class="skill-item html">
+                            <i class="fab fa-html5"></i>
+                            <h3>html</h3>
+                        </div>
+                        <div class="skill-item css">
+                            <i class="fab fa-css3-alt"></i>
+                            <h3>css</h3>
+                        </div>
+                        <div class="skill-item js">
+                            <i class="fab fa-js-square"></i>
+                            <h3>js</h3>
+                        </div>
+                        <div class="skill-item vue">
+                            <i class="fab fa-vuejs"></i>
+                            <h3>vue</h3>
+                        </div>
+                        <div class="skill-item react">
+                            <i class="fab fa-react"></i>
+                            <h3>react</h3>
+                        </div>
+                        <div class="skill-item java">
+                            <i class="fas fa-coffee"></i>
+                            <h3>java</h3>
+                        </div>
+                        <div class="skill-item spring">
+                            <i class="fas fa-leaf"></i>
+                            <h3>spring</h3>
+                        </div>
+                        <div class="skill-item mybatis">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis</h3>
+                        </div>
+                        <div class="skill-item mybatis-plus">
+                            <i class="fas fa-database"></i>
+                            <h3>mybatis-plus</h3>
+                        </div>
+                        <div class="skill-item springboot">
+                            <i class="fas fa-rocket"></i>
+                            <h3>springboot</h3>
+                        </div>
+                        <div class="skill-item springcloud">
+                            <i class="fas fa-cloud"></i>
+                            <h3>springcloud</h3>
+                        </div>
+                        <div class="skill-item mysql">
+                            <i class="fas fa-database"></i>
+                            <h3>mysql</h3>
+                        </div>
+                        <div class="skill-item redis">
+                            <i class="fas fa-bolt"></i>
+                            <h3>redis</h3>
+                        </div>
+                        <div class="skill-item html">
+                            <i class="fab fa-html5"></i>
+                            <h3>html</h3>
+                        </div>
+                        <div class="skill-item css">
+                            <i class="fab fa-css3-alt"></i>
+                            <h3>css</h3>
+                        </div>
+                        <div class="skill-item js">
+                            <i class="fab fa-js-square"></i>
+                            <h3>js</h3>
+                        </div>
+                        <div class="skill-item vue">
+                            <i class="fab fa-vuejs"></i>
+                            <h3>vue</h3>
+                        </div>
+                        <div class="skill-item react">
+                            <i class="fab fa-react"></i>
+                            <h3>react</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
+    
+    <section id="projects">
+        <div class="container">
+            <h2>我的项目</h2>
+            <div class="projects-container">
+                <div class="projects-grid">
+                    <div class="project-item" onclick="window.open('https://github.com/FishDuM/PopWord', '_blank')">
+                        <h3>PopWord弹词</h3>
+                        <p>基于 Chrome 扩展的英语学习插件。支持四级、六级等英语词汇。在网页上通过左/右键点击切换单词，支持发音、浮动展示、多词库、学习记录与缓存管理，助你边浏览边记单词。</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>智能云图库</h3>
+                        <p>开发中。</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>高并发秒杀商城</h3>
+                        <p>开发中。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>联系方式</h2>
+            <p>邮箱: fish.java.react@gmail.com</p>
+            <p>GitHub: https://github.com/FishDuM</p>
+            <p>QQ：3057433102</p>
+        </div>
+        <a href="http://www.pdxstudio.site/" target="_blank" class="friend-link">友联：<i class="fas fa-link"></i> 大星科技</a>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 会飞的鱼. All rights reserved.</p>
+        </div>
+    </footer>
+    </main>
+</body>
+</html>
