@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fishdum.github.io/sitemap.xml
