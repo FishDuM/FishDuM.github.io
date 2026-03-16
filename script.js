@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 多语言内容
     const translations = {
         'zh-cn': {
-            title: '会飞的鱼 - Java后端开发者',
-            name: '会飞的鱼',
-            role: 'Java后端开发者',
-            intro1: '我是会飞的鱼，一名Java后端开发者，热爱编写高质量、可维护的代码。',
-            intro2: '我拥有丰富的后端开发经验，熟悉Spring Boot、Spring Cloud等主流框架，致力于构建可靠、高效的企业级应用。',
+            title: '会飞的鱼 Fish - Java后端全栈开发者',
+            name: '会飞的鱼 Fish',
+            role: 'Java后端全栈开发者',
+            intro1: '我是会飞的鱼(Fish)，一名Java后端全栈开发者，热爱编写高质量、可维护的代码，擅长前端和后端开发。',
+            intro2: '我拥有丰富的后端开发经验，熟悉Spring Boot、Spring Cloud等主流框架，同时具备前端开发技能，致力于构建可靠、高效的企业级应用。',
             skills: '我的技术栈',
             projects: '我的项目',
             project1: 'PopWord弹词',
@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'zh': {
-            title: '會飛的魚 - Java後端開發者',
-            name: '會飛的魚',
-            role: 'Java後端開發者',
-            intro1: '我係會飛的魚，一名Java後端開發者，鍾意寫高質素、可維護嘅代碼。',
-            intro2: '我有豐富嘅後端開發經驗，熟識Spring Boot、Spring Cloud等主流框架，致力於構建可靠、高效嘅企業級應用。',
+            title: '會飛的魚 Fish - Java後端全棧開發者',
+            name: '會飛的魚 Fish',
+            role: 'Java後端全棧開發者',
+            intro1: '我係會飛的魚(Fish)，一名Java後端全棧開發者，鍾意寫高質素、可維護嘅代碼，擅長前端同後端開發。',
+            intro2: '我有豐富嘅後端開發經驗，熟識Spring Boot、Spring Cloud等主流框架，同時具備前端開發技能，致力於構建可靠、高效嘅企業級應用。',
             skills: '我嘅技術棧',
             projects: '我嘅項目',
             project1: 'PopWord彈詞',
@@ -115,11 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'en': {
-            title: 'Flying Fish - Java Backend Developer',
+            title: 'Flying Fish - Java Backend Full Stack Developer',
             name: 'Flying Fish',
-            role: 'Java Backend Developer',
-            intro1: 'I am Flying Fish, a Java backend developer who loves writing high-quality, maintainable code.',
-            intro2: 'I have rich backend development experience, familiar with mainstream frameworks such as Spring Boot and Spring Cloud, dedicated to building reliable and efficient enterprise applications.',
+            role: 'Java Backend Full Stack Developer',
+            intro1: 'I am Flying Fish, a Java backend full stack developer who loves writing high-quality, maintainable code, specializing in both frontend and backend development.',
+            intro2: 'I have rich backend development experience, familiar with mainstream frameworks such as Spring Boot and Spring Cloud, while also possessing frontend development skills, dedicated to building reliable and efficient enterprise applications.',
             skills: 'My Tech Stack',
             projects: 'My Projects',
             project1: 'PopWord',
@@ -154,11 +154,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'ja': {
-            title: '飛ぶ魚 - Javaバックエンド開発者',
-            name: '飛ぶ魚',
-            role: 'Javaバックエンド開発者',
-            intro1: '私は飛ぶ魚で、Javaバックエンド開発者です。高品質で保守可能なコードを書くのが大好きです。',
-            intro2: '豊富なバックエンド開発経験を持ち、Spring Boot、Spring Cloudなどの主流フレームワークに精通し、信頼性が高く効率的なエンタープライズアプリケーションの構築に取り組んでいます。',
+            title: '飛ぶ魚 Flying Fish - Javaバックエンドフルスタック開発者',
+            name: '飛ぶ魚 Flying Fish',
+            role: 'Javaバックエンドフルスタック開発者',
+            intro1: '私は飛ぶ魚(Flying Fish)で、Javaバックエンドフルスタック開発者です。高品質で保守可能なコードを書くのが大好きです。フロントエンドとバックエンドの開発に特化しています。',
+            intro2: '豊富なバックエンド開発経験を持ち、Spring Boot、Spring Cloudなどの主流フレームワークに精通し、フロントエンド開発スキルも備えています。信頼性が高く効率的なエンタープライズアプリケーションの構築に取り組んでいます。',
             skills: '私の技術スタック',
             projects: '私のプロジェクト',
             project1: 'PopWord',
