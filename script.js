@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 多语言内容
     const translations = {
         'zh-cn': {
-            title: '梁俊熙 - 广东理工学院 Java后端开发者',
-            name: '梁俊熙 | 会飞的鱼',
-            role: '广东理工学院 Java后端开发者',
-            intro1: '我是梁俊熙，毕业于广东理工学院，一名Java后端开发者，热爱编写高质量、可维护的代码。',
-            intro2: '作为广东理工学院的毕业生，我拥有丰富的后端开发经验，熟悉Spring Boot、Spring Cloud等主流框架，致力于构建可靠、高效的企业级应用。',
+            title: '会飞的鱼 - Java后端开发者',
+            name: '会飞的鱼',
+            role: 'Java后端开发者',
+            intro1: '我是会飞的鱼，一名Java后端开发者，热爱编写高质量、可维护的代码。',
+            intro2: '我拥有丰富的后端开发经验，熟悉Spring Boot、Spring Cloud等主流框架，致力于构建可靠、高效的企业级应用。',
             skills: '我的技术栈',
             projects: '我的项目',
             project1: 'PopWord弹词',
@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'zh': {
-            title: '梁俊熙 - 廣東理工學院 Java後端開發者',
-            name: '梁俊熙 | 會飛的魚',
-            role: '廣東理工學院 Java後端開發者',
-            intro1: '我係梁俊熙，畢業於廣東理工學院，一名Java後端開發者，鍾意寫高質素、可維護嘅代碼。',
-            intro2: '作為廣東理工學院嘅畢業生，我有豐富嘅後端開發經驗，熟識Spring Boot、Spring Cloud等主流框架，致力於構建可靠、高效嘅企業級應用。',
+            title: '會飛的魚 - Java後端開發者',
+            name: '會飛的魚',
+            role: 'Java後端開發者',
+            intro1: '我係會飛的魚，一名Java後端開發者，鍾意寫高質素、可維護嘅代碼。',
+            intro2: '我有豐富嘅後端開發經驗，熟識Spring Boot、Spring Cloud等主流框架，致力於構建可靠、高效嘅企業級應用。',
             skills: '我嘅技術棧',
             projects: '我嘅項目',
             project1: 'PopWord彈詞',
@@ -115,11 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'en': {
-            title: 'Liang Junxi - Guangdong Polytechnic College Java Backend Developer',
-            name: 'Liang Junxi | Flying Fish',
-            role: 'Guangdong Polytechnic College Java Backend Developer',
-            intro1: 'I am Liang Junxi, graduated from Guangdong Polytechnic College, a Java backend developer who loves writing high-quality, maintainable code.',
-            intro2: 'As a graduate of Guangdong Polytechnic College, I have rich backend development experience, familiar with mainstream frameworks such as Spring Boot and Spring Cloud, dedicated to building reliable and efficient enterprise applications.',
+            title: 'Flying Fish - Java Backend Developer',
+            name: 'Flying Fish',
+            role: 'Java Backend Developer',
+            intro1: 'I am Flying Fish, a Java backend developer who loves writing high-quality, maintainable code.',
+            intro2: 'I have rich backend development experience, familiar with mainstream frameworks such as Spring Boot and Spring Cloud, dedicated to building reliable and efficient enterprise applications.',
             skills: 'My Tech Stack',
             projects: 'My Projects',
             project1: 'PopWord',
@@ -154,11 +154,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         'ja': {
-            title: '梁俊熙 - 広東理工学院 Javaバックエンド開発者',
-            name: '梁俊熙 | 飛ぶ魚',
-            role: '広東理工学院 Javaバックエンド開発者',
-            intro1: '私は梁俊熙で、広東理工学院を卒業し、Javaバックエンド開発者です。高品質で保守可能なコードを書くのが大好きです。',
-            intro2: '広東理工学院の卒業生として、豊富なバックエンド開発経験を持ち、Spring Boot、Spring Cloudなどの主流フレームワークに精通し、信頼性が高く効率的なエンタープライズアプリケーションの構築に取り組んでいます。',
+            title: '飛ぶ魚 - Javaバックエンド開発者',
+            name: '飛ぶ魚',
+            role: 'Javaバックエンド開発者',
+            intro1: '私は飛ぶ魚で、Javaバックエンド開発者です。高品質で保守可能なコードを書くのが大好きです。',
+            intro2: '豊富なバックエンド開発経験を持ち、Spring Boot、Spring Cloudなどの主流フレームワークに精通し、信頼性が高く効率的なエンタープライズアプリケーションの構築に取り組んでいます。',
             skills: '私の技術スタック',
             projects: '私のプロジェクト',
             project1: 'PopWord',
