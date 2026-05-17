@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教程文档首页 - FishDuM Docs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <div class="page-shell" data-doc-home="true">
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-badge"><i class="ti ti-book-2"></i></span>
+                <div class="topbar-copy">
+                    <h1>FishDuM Docs</h1>
+                    <p>学习目录首页</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a class="pill-btn" href="index.html"><i class="ti ti-arrow-left"></i><span>返回首页</span></a>
+                <a class="pill-btn" href="#docs-nav"><i class="ti ti-layout-grid"></i><span>文档目录</span></a>
+                <button class="pill-btn" id="page-theme-toggle" type="button"><i class="ti ti-moon"></i><span>主题</span></button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="eyebrow">Docs Home</div>
+            <h2>技术文档首页</h2>
+            <p>这里是站内文档的总入口。你可以从这里进入不同方向的技术教程，例如零基础、前端、后端、Go、Python、大数据和 AI。整体结构采用传统文档形式，首页负责目录分发，具体教程页负责正文展开。</p>
+        </section>
+
+        <section class="panel" id="docs-nav">
+            <h3 class="section-title">阅读入口</h3>
+            <p class="section-desc">如果你是第一次阅读，建议先从零基础或自己当前最缺的方向开始。下面的目录会直接跳到对应技术页。</p>
+        </section>
+
+        <section class="panel" id="basic">
+            <h3 class="section-title">零基础与通用能力</h3>
+            <p class="section-desc">适合完全没有开发基础，或者会抄代码但底层理解很虚的人。这里先解决共通概念和开发工具问题。</p>
+            <p><a href="tutorial-basic.html">《零基础入门》</a>：先理解编程、文件、命令行和项目结构到底是什么。</p>
+            <p><a href="tutorial-basic-programming.html">《编程基础》</a>：变量、条件、循环、函数，是所有语言都会反复出现的底层能力。</p>
+            <p><a href="tutorial-basic-tools.html">《开发工具》</a>：终端、编辑器、Git、排错习惯，决定你能不能稳定做项目。</p>
+        </section>
+
+        <section class="panel" id="frontend">
+            <h3 class="section-title">前端技术文档</h3>
+            <p class="section-desc">从网页结构、样式、交互开始，再进入组件化和框架阶段。</p>
+            <p><a href="tutorial-html.html">《HTML》</a>：学习网页结构、语义化标签、表单和内容组织方式。</p>
+            <p><a href="tutorial-css.html">《CSS》</a>：学习页面样式、盒模型、布局、响应式和基础视觉表达。</p>
+            <p><a href="tutorial-javascript.html">《JavaScript》</a>：学习 DOM、事件、异步请求和网页交互能力。</p>
+            <p><a href="tutorial-frontend-frameworks.html">《Vue / React》</a>：理解组件化、状态管理和复杂前端页面的组织方式。</p>
+        </section>
+
+        <section class="panel" id="backend">
+            <h3 class="section-title">后端技术文档</h3>
+            <p class="section-desc">从 Java 基础和接口开发开始，逐步进入数据库、缓存和工程能力。</p>
+            <p><a href="tutorial-java-basic.html">《Java》</a>：语法、类与对象、集合、异常，是后端主线的基础。</p>
+            <p><a href="tutorial-springboot.html">《Spring Boot》</a>：第一个接口、参数处理、分层结构和真实业务开发入口。</p>
+            <p><a href="tutorial-database-cache.html">《MySQL / Redis》</a>：理解正式数据和缓存数据分别怎么存、为什么要分层。</p>
+            <p><a href="tutorial-java-backend.html">《后端主线总览》</a>：把 Java、Spring Boot、数据库和工程能力串成完整路线。</p>
+        </section>
+
+        <section class="panel" id="extended">
+            <h3 class="section-title">扩展方向文档</h3>
+            <p class="section-desc">这些方向适合在主线稳住之后继续补，帮助你形成更完整的工程视野。</p>
+            <p><a href="tutorial-go.html">《Go》</a>：适合补性能服务、并发思维和轻量后端能力。</p>
+            <p><a href="tutorial-python.html">《Python》</a>：适合补自动化、数据处理和 AI 工具链能力。</p>
+            <p><a href="tutorial-client.html">《iOS / Android》</a>：理解客户端和 Web 的差异，建立多端产品视角。</p>
+            <p><a href="tutorial-bigdata.html">《大数据》</a>：理解数据采集、清洗、分析和实时链路是怎么组织的。</p>
+            <p><a href="tutorial-ai.html">《AI / Agent / 大模型》</a>：从模型调用到 RAG、Agent 和工程化平台的路线。</p>
+        </section>
+    </div>
+
+    <script src="tutorial.js"></script>
+</body>
+</html>

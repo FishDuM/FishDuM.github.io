@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发工具教程 - 文件、终端、Git、调试</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-badge"><i class="ti ti-terminal-2"></i></span>
+                <div class="topbar-copy">
+                    <h1>开发工具教程</h1>
+                    <p>会写代码之前，先学会保存、运行、管理和排查代码</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a class="pill-btn" href="tutorial-basic.html"><i class="ti ti-arrow-left"></i><span>返回上一层</span></a>
+                <button class="pill-btn" id="page-theme-toggle" type="button"><i class="ti ti-moon"></i><span>主题</span></button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="eyebrow"><i class="ti ti-tool"></i><span>Tools</span></div>
+            <h2>很多人不是不会写代码，而是不会管理代码</h2>
+            <p>文件放在哪里、项目怎么打开、终端怎么用、Git 怎么提交、报错怎么看，这些看起来不像“编程”，但它们实际上决定了你能不能顺利开发。</p>
+        </section>
+
+        <section class="panel">
+            <div class="section-kicker">Tool Basics</div>
+            <h3 class="section-title">先把最常见的开发工具学会</h3>
+            <p class="section-desc">当你开始做项目后，真正高频出现的不是复杂算法，而是创建文件、进入目录、安装依赖、运行项目、提交代码、定位报错。</p>
+
+            <div class="anchor-nav">
+                <a class="anchor-link" href="#file"><i class="ti ti-folder"></i><span>文件与路径</span></a>
+                <a class="anchor-link" href="#terminal"><i class="ti ti-terminal-2"></i><span>终端命令</span></a>
+                <a class="anchor-link" href="#editor"><i class="ti ti-code"></i><span>编辑器</span></a>
+                <a class="anchor-link" href="#git"><i class="ti ti-brand-github"></i><span>Git 与 GitHub</span></a>
+                <a class="anchor-link" href="#debug"><i class="ti ti-bug"></i><span>看报错</span></a>
+            </div>
+
+            <div class="chapter-list">
+                <section class="chapter" id="file">
+                    <div class="chapter-head">
+                        <span class="chapter-index">01</span>
+                        <div class="chapter-copy">
+                            <h4>文件、文件夹、路径是什么</h4>
+                            <p>如果你对“代码保存在什么位置”没有感觉，后面做项目会很容易混乱。一个项目的第一步，往往不是写代码，而是把文件结构整理清楚。</p>
+                        </div>
+                    </div>
+                    <div class="compare-grid">
+                        <div class="compare-card">
+                            <h5>文件</h5>
+                            <p>`index.html`、`app.js`、`logo.png` 都是文件，分别保存网页、代码和图片。</p>
+                        </div>
+                        <div class="compare-card">
+                            <h5>文件夹</h5>
+                            <p>`site`、`images`、`src` 这类目录用来分类保存不同文件。</p>
+                        </div>
+                    </div>
+                    <div class="table-grid">
+                        <div class="table-row">
+                            <strong>路径</strong>
+                            <span>路径就是“这个文件具体放在哪里”的描述，比如 `site/index.html`。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>后缀名</strong>
+                            <span>像 `.html`、`.css`、`.js` 这样，告诉系统文件是什么类型。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>相对路径</strong>
+                            <span>从当前文件出发去找另一个文件，比如 `./style.css`。</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chapter" id="terminal">
+                    <div class="chapter-head">
+                        <span class="chapter-index">02</span>
+                        <div class="chapter-copy">
+                            <h4>终端：你和电脑直接说话的窗口</h4>
+                            <p>终端并不可怕，它只是一个没有图形按钮的操作入口。很多开发命令在终端里会比鼠标点来点去更快，也更准确。</p>
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h5>几个最常见的命令</h5>
+                        <pre><code>cd site
+ls
+mkdir demo
+code .</code></pre>
+                    </div>
+                    <div class="table-grid">
+                        <div class="table-row">
+                            <strong>`cd site`</strong>
+                            <span>进入 `site` 目录。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`ls`</strong>
+                            <span>查看当前目录里有什么。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`mkdir demo`</strong>
+                            <span>创建一个名为 `demo` 的新文件夹。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`code .`</strong>
+                            <span>用 VS Code 打开当前目录。</span>
+                        </div>
+                    </div>
+                    <div class="warning-box">
+                        <h5>终端里最常见的误区</h5>
+                        <p>不是命令记不住，而是不知道自己“当前在哪个目录”。很多操作失败，根本原因只是命令执行的位置不对。</p>
+                    </div>
+                </section>
+
+                <section class="chapter" id="editor">
+                    <div class="chapter-head">
+                        <span class="chapter-index">03</span>
+                        <div class="chapter-copy">
+                            <h4>VS Code 和 IDEA 分别适合什么</h4>
+                            <p>它们都能写代码，但擅长的场景不一样。你不用一开始就把所有功能都学会，只要知道在不同阶段用哪个更顺手即可。</p>
+                        </div>
+                    </div>
+                    <div class="compare-grid">
+                        <div class="compare-card">
+                            <h5>VS Code</h5>
+                            <p>轻、快、插件多，特别适合 HTML、CSS、JavaScript、Vue、React、Python 等方向。</p>
+                        </div>
+                        <div class="compare-card">
+                            <h5>IntelliJ IDEA</h5>
+                            <p>对 Java、Spring Boot、Maven、调试和大型工程支持更强，适合后端主线。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chapter" id="git">
+                    <div class="chapter-head">
+                        <span class="chapter-index">04</span>
+                        <div class="chapter-copy">
+                            <h4>Git 和 GitHub：给代码留“时间记录”</h4>
+                            <p>Git 是版本管理工具，GitHub 是常见的远程仓库平台。你可以把 Git 理解成“本地存档机”，把 GitHub 理解成“云端备份柜”。</p>
+                        </div>
+                    </div>
+                    <div class="flow-list">
+                        <div class="flow-item">
+                            <strong>`git init`</strong>
+                            <p>把当前目录初始化成一个 Git 项目。</p>
+                        </div>
+                        <div class="flow-item">
+                            <strong>`git add .`</strong>
+                            <p>把当前修改加入暂存区，表示“这些改动准备保存”。</p>
+                        </div>
+                        <div class="flow-item">
+                            <strong>`git commit -m "..."`</strong>
+                            <p>正式生成一个版本快照。</p>
+                        </div>
+                        <div class="flow-item">
+                            <strong>`git push`</strong>
+                            <p>把本地版本推送到远程仓库。</p>
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h5>日常最常用的流程</h5>
+                        <pre><code>git status
+git add .
+git commit -m "完成个人主页第一版"
+git push</code></pre>
+                    </div>
+                    <div class="checkpoint-box">
+                        <h5>要尽早养成的 Git 习惯</h5>
+                        <ul class="item-list">
+                            <li>每做完一个小功能就提交一次，不要攒太久。</li>
+                            <li>提交信息尽量写清楚，不要总写 `update`。</li>
+                            <li>做大改动前先提交一版，出问题更容易回退。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="chapter" id="debug">
+                    <div class="chapter-head">
+                        <span class="chapter-index">05</span>
+                        <div class="chapter-copy">
+                            <h4>怎么看报错，才不会一报错就慌</h4>
+                            <p>报错不是敌人，报错其实是在告诉你：哪一行附近有问题、哪种规则不符合、程序找不到什么东西。越早建立“读报错”的习惯，成长越快。</p>
+                        </div>
+                    </div>
+                    <div class="table-grid">
+                        <div class="table-row">
+                            <strong>先看位置</strong>
+                            <span>大多数报错都会告诉你大致在哪一行出问题。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>再看关键词</strong>
+                            <span>比如 `not defined`、`cannot find`、`unexpected token`，通常已经说明了问题类型。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>最后缩小范围</strong>
+                            <span>优先检查你最近改过的那一小段，不要一口气盯整页代码。</span>
+                        </div>
+                    </div>
+                    <div class="practice-box">
+                        <h5>最简单的练习方式</h5>
+                        <p>故意把一个变量名写错一次，观察报错内容，再自己修回来。主动体验一次“为什么会报错”，比只看说明更容易学会。</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="lesson-nav">
+                <a class="lesson-link" href="tutorial-basic-programming.html"><i class="ti ti-arrow-left"></i><span>返回：编程基础</span></a>
+                <a class="lesson-link" href="tutorial-frontend-basic.html"><i class="ti ti-arrow-right"></i><span>下一阶段：前端基础</span></a>
+            </div>
+        </section>
+    </div>
+    <script src="tutorial.js"></script>
+</body>
+</html>

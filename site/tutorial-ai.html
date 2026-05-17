@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI / Agent / 大模型教程 - 从应用到工程化</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-badge"><i class="ti ti-brain"></i></span>
+                <div class="topbar-copy">
+                    <h1>AI / Agent / 大模型教程</h1>
+                    <p>从模型调用、RAG 到 Agent 和工程化平台，逐步理解现代 AI 应用</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a class="pill-btn" href="plan.html"><i class="ti ti-arrow-left"></i><span>返回总览</span></a>
+                <button class="pill-btn" id="page-theme-toggle" type="button"><i class="ti ti-moon"></i><span>主题</span></button>
+            </div>
+        </header>
+        <section class="hero">
+            <div class="eyebrow"><i class="ti ti-robot"></i><span>LLM Engineering</span></div>
+            <h2>AI 不只是“会聊天”，真正重要的是把模型做进系统</h2>
+            <p>现代 AI 应用常见的学习路径通常是：先会调用模型，再会做知识库和 RAG，再会做 Agent，最后再理解微调、监控、成本和平台化。</p>
+            <div class="hero-tags">
+                <span class="hero-tag"><i class="ti ti-message-chatbot"></i>模型调用</span>
+                <span class="hero-tag"><i class="ti ti-book-2"></i>RAG</span>
+                <span class="hero-tag"><i class="ti ti-robot"></i>Agent</span>
+                <span class="hero-tag"><i class="ti ti-adjustments-horizontal"></i>工程化</span>
+            </div>
+        </section>
+        <section class="panel">
+            <div class="grid cols-2">
+                <article class="card">
+                    <div class="card-title"><i class="ti ti-message-chatbot"></i>第一层：模型应用</div>
+                    <ul class="item-list">
+                        <li>Prompt、上下文、Token。</li>
+                        <li>聊天、总结、翻译、分类。</li>
+                        <li>Java / Python / JS 调模型接口。</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <div class="card-title"><i class="ti ti-book-2"></i>第二层：RAG 与知识库</div>
+                    <ul class="item-list">
+                        <li>向量库、切片、召回、重排。</li>
+                        <li>企业知识问答、网站问答、文档问答。</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <div class="card-title"><i class="ti ti-robot"></i>第三层：Agent</div>
+                    <ul class="item-list">
+                        <li>工具调用。</li>
+                        <li>多步任务执行。</li>
+                        <li>浏览器、文件、搜索等外部能力接入。</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <div class="card-title"><i class="ti ti-server-cog"></i>第四层：工程化</div>
+                    <ul class="item-list">
+                        <li>成本、延迟、监控、权限、安全。</li>
+                        <li>模型路由、失败兜底、平台化部署。</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="example">
+                <h5>一个很小的学习顺序例子</h5>
+                <pre><code>先做：一个调用模型接口的问答页
+再做：一个带知识库的文档问答页
+再做：一个会调用工具的 Agent
+最后做：可监控、可配置、可复用的 AI 功能模块</code></pre>
+            </div>
+            <div class="tip-box">
+                <h5>为什么不要一上来就追最热术语</h5>
+                <p>如果前面的模型调用、数据输入输出和业务接入都没搞清楚，直接学 Agent 或微调，通常只会停留在概念层，难以落地。</p>
+            </div>
+        </section>
+    </div>
+    <script src="tutorial.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL / Redis 教程 - 后端数据层入门</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-badge"><i class="ti ti-database"></i></span>
+                <div class="topbar-copy">
+                    <h1>MySQL / Redis 教程</h1>
+                    <p>理解数据库和缓存分别解决什么问题，建立最基础的数据层思维</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a class="pill-btn" href="tutorial-java-backend.html"><i class="ti ti-arrow-left"></i><span>返回上一层</span></a>
+                <button class="pill-btn" id="page-theme-toggle" type="button"><i class="ti ti-moon"></i><span>主题</span></button>
+            </div>
+        </header>
+        <section class="hero">
+            <div class="eyebrow"><i class="ti ti-server-cog"></i><span>Data Layer</span></div>
+            <h2>没有数据层，后端系统就只是空架子</h2>
+            <p>MySQL 负责长期、稳定地保存正式数据；Redis 负责快速读取高频数据。它们不是互相替代，而是分工协作。</p>
+        </section>
+        <section class="panel">
+            <div class="grid cols-2">
+                <article class="card">
+                    <div class="card-title"><i class="ti ti-database"></i>MySQL</div>
+                    <ul class="item-list">
+                        <li>表、字段、主键、索引。</li>
+                        <li>适合保存用户、订单、文章等正式业务数据。</li>
+                        <li>重点是“正确、稳定、可查询”。</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <div class="card-title"><i class="ti ti-bolt"></i>Redis</div>
+                    <ul class="item-list">
+                        <li>内存型缓存。</li>
+                        <li>适合验证码、登录状态、热点数据。</li>
+                        <li>重点是“快速”。</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="example">
+                <h5>最简单的理解方式</h5>
+                <pre><code>MySQL = 正式仓库
+Redis = 快速取货架
+
+用户资料、订单记录 -> 放 MySQL
+首页热门商品、登录状态 -> 放 Redis</code></pre>
+            </div>
+            <div class="tip-box">
+                <h5>为什么一定要分清这两者</h5>
+                <p>如果你把所有东西都直接查数据库，系统会变慢；如果你把正式数据只放缓存，又容易丢失和不一致。理解分工，是后面做性能优化的前提。</p>
+            </div>
+        </section>
+    </div>
+    <script src="tutorial.js"></script>
+</body>
+</html>

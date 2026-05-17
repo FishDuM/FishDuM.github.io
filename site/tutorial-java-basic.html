@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java 基础教程 - 语法、对象与集合</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-badge"><i class="ti ti-coffee"></i></span>
+                <div class="topbar-copy">
+                    <h1>Java 基础教程</h1>
+                    <p>语法、对象与集合</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a class="pill-btn" href="plan.html"><i class="ti ti-arrow-left"></i><span>返回首页</span></a>
+                <button class="pill-btn" id="page-theme-toggle" type="button"><i class="ti ti-moon"></i><span>主题</span></button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="eyebrow">Java</div>
+            <h2>学 Java，重点不只是语法，而是对象思维</h2>
+            <p>很多人刚学 Java 时只盯着语法细节，但真正决定你后面能不能顺利进入 Spring Boot 和后端开发的，是你有没有把类、对象、方法、集合、异常这些基础概念想清楚。</p>
+        </section>
+
+        <section class="panel">
+            <h3 class="section-title">Java 基础阶段到底要掌握什么</h3>
+            <p class="section-desc">Java 的基础阶段大致可以分成三层。第一层是基础语法，第二层是面向对象，第三层是集合与异常。语法只是入口，面向对象和集合才是后面后端开发里真正高频使用的部分。</p>
+
+            <div class="chapter-list">
+                <section class="chapter">
+                    <div class="chapter-head">
+                        <div class="chapter-copy">
+                            <h4>先把语法打稳</h4>
+                            <p>Java 的基础语法部分包括变量、数据类型、条件判断、循环、方法、数组和字符串处理。这一层和你学过的其他编程语言会有不少相似点，所以它不是最难的部分，但必须过关。</p>
+                            <p>如果这一层不稳，后面你写任何类和对象时都会持续卡住，因为最基本的变量、参数、返回值和控制流程都没有真正熟悉。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chapter">
+                    <div class="chapter-head">
+                        <div class="chapter-copy">
+                            <h4>类和对象是 Java 的核心</h4>
+                            <p>Java 是一门典型的面向对象语言。你可以把类理解成一张蓝图，把对象理解成按照蓝图造出来的具体实体。比如“用户”可以是一个类，而“张三”就是一个具体用户对象。</p>
+                            <p>后面在 Spring Boot 里你会不断写实体类、请求对象、返回对象、服务类、控制器类。如果你现在对类和对象的关系没有建立起来，后面会反复混乱。</p>
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h5>一个最小类示例</h5>
+                        <pre><code>public class User {
+    String name;
+    int age;
+
+    public void sayHello() {
+        System.out.println("你好，我是" + name);
+    }
+}</code></pre>
+                    </div>
+                    <p>在这个例子里，`User` 是类，`name` 和 `age` 是属性，`sayHello` 是方法。你以后创建对象时，本质上就是在使用这张蓝图。</p>
+                </section>
+
+                <section class="chapter">
+                    <div class="chapter-head">
+                        <div class="chapter-copy">
+                            <h4>集合是业务代码里的高频工具</h4>
+                            <p>真实开发里你几乎不可能只处理单个数据。你会经常处理用户列表、订单列表、文章列表、权限映射等成组的数据。这个时候就会大量使用集合。</p>
+                            <ul class="item-list">
+                                <li>`List`：适合按顺序存放一组数据。</li>
+                                <li>`Set`：适合去重，不允许重复元素。</li>
+                                <li>`Map`：适合做键值对应关系，比如 id 对应用户对象。</li>
+                            </ul>
+                            <p>理解集合不是为了背接口名字，而是为了知道“当前这组数据应该怎么组织才合理”。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chapter">
+                    <div class="chapter-head">
+                        <div class="chapter-copy">
+                            <h4>异常处理是你和错误打交道的方式</h4>
+                            <p>初学时一看到报错就容易慌，但在 Java 里，异常处理其实是一个很明确的能力。你需要知道哪些情况可能失败，失败后程序应该怎么处理，是直接抛出去，还是在当前层处理掉。</p>
+                            <p>最常见的结构就是 `try / catch`。它的意义不是把错误“藏起来”，而是让你明确地接住错误，并做出合理反应。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chapter">
+                    <div class="chapter-head">
+                        <div class="chapter-copy">
+                            <h4>这一阶段最容易忽略的事</h4>
+                            <p>很多人会急着去搭框架，却没有认真消化 Java 基础。结果就是能把项目跑起来，但代码一复杂就看不懂，也不知道为什么要这样分层和这样写类。</p>
+                            <p>更稳妥的做法是：先把语法、对象、集合、异常这些基础打牢，再进 Spring Boot。这样你写接口时会清楚很多，不会只是机械照抄。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+    <script src="tutorial.js"></script>
+</body>
+</html>

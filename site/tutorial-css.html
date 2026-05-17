@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 教程 - 页面样式与布局</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-badge"><i class="ti ti-palette"></i></span>
+                <div class="topbar-copy">
+                    <h1>CSS 教程</h1>
+                    <p>让页面从“能显示”变成“清晰、整齐、好看而且适配不同设备”</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a class="pill-btn" href="tutorial-frontend-basic.html"><i class="ti ti-arrow-left"></i><span>返回上一层</span></a>
+                <button class="pill-btn" id="page-theme-toggle" type="button"><i class="ti ti-moon"></i><span>主题</span></button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="eyebrow"><i class="ti ti-brush"></i><span>CSS Basics</span></div>
+            <h2>CSS 决定页面最后看起来是什么样</h2>
+            <p>同样的 HTML，在不同 CSS 下可以长得完全不一样。所以学 CSS 的核心，不是死记属性，而是理解“选中谁”“改什么”“怎么布局”。</p>
+            <div class="hero-tags">
+                <span class="hero-tag"><i class="ti ti-color-swatch"></i>颜色与字体</span>
+                <span class="hero-tag"><i class="ti ti-box-margin"></i>盒模型</span>
+                <span class="hero-tag"><i class="ti ti-layout-grid"></i>布局</span>
+                <span class="hero-tag"><i class="ti ti-device-mobile"></i>响应式</span>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-kicker">CSS Guide</div>
+            <h3 class="section-title">先学思路，再学属性</h3>
+            <p class="section-desc">你完全没必要一开始把所有 CSS 属性背下来。真正决定你能不能做出页面的，是选择器、盒模型、Flex、Grid 和响应式这些思维方式。</p>
+
+            <div class="anchor-nav">
+                <a class="anchor-link" href="#syntax"><i class="ti ti-brackets"></i><span>语法和选择器</span></a>
+                <a class="anchor-link" href="#box"><i class="ti ti-box-margin"></i><span>盒模型</span></a>
+                <a class="anchor-link" href="#layout"><i class="ti ti-layout-grid"></i><span>布局</span></a>
+                <a class="anchor-link" href="#responsive"><i class="ti ti-device-mobile"></i><span>响应式</span></a>
+                <a class="anchor-link" href="#practice"><i class="ti ti-pencil"></i><span>练习任务</span></a>
+            </div>
+
+            <div class="chapter-list">
+                <section class="chapter" id="syntax">
+                    <div class="chapter-head">
+                        <span class="chapter-index">01</span>
+                        <div class="chapter-copy">
+                            <h4>CSS 的基本语法：选中一个元素，再给它样式</h4>
+                            <p>CSS 的本质非常简单：先找到你要改的元素，再写你想改的属性和对应的值。</p>
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h5>最基础的 CSS 写法</h5>
+                        <pre><code>h1 {
+  color: #222;
+  font-size: 32px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+}</code></pre>
+                    </div>
+                    <div class="table-grid">
+                        <div class="table-row">
+                            <strong>`h1`</strong>
+                            <span>标签选择器，表示选中所有 `h1`。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`.card`</strong>
+                            <span>类选择器，表示选中 class 包含 `card` 的元素。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`color`、`font-size`</strong>
+                            <span>样式属性，分别控制颜色和字号。</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="chapter" id="box">
+                    <div class="chapter-head">
+                        <span class="chapter-index">02</span>
+                        <div class="chapter-copy">
+                            <h4>盒模型：页面里的每个元素都像一个盒子</h4>
+                            <p>理解盒模型以后，你会更容易明白为什么元素会挤在一起、为什么会留白、为什么宽度看起来不对。</p>
+                        </div>
+                    </div>
+                    <div class="table-grid">
+                        <div class="table-row">
+                            <strong>`width` / `height`</strong>
+                            <span>控制盒子本身的宽高。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`padding`</strong>
+                            <span>内容和边框之间的内边距。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`margin`</strong>
+                            <span>元素和其他元素之间的外边距。</span>
+                        </div>
+                        <div class="table-row">
+                            <strong>`border`</strong>
+                            <span>元素边框。</span>
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h5>一个卡片盒子的写法</h5>
+                        <pre><code>.card {
+  width: 320px;
+  padding: 20px;
+  margin: 16px auto;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+}</code></pre>
+                    </div>
+                    <div class="warning-box">
+                        <h5>新手常见误区</h5>
+                        <p>看到元素“太挤”就乱改宽高，其实很多时候真正该调整的是 `margin` 和 `padding`。</p>
+                    </div>
+                </section>
+
+                <section class="chapter" id="layout">
+                    <div class="chapter-head">
+                        <span class="chapter-index">03</span>
+                        <div class="chapter-copy">
+                            <h4>布局：让元素排成你想要的样子</h4>
+                            <p>布局能力是 CSS 最重要的部分之一。比如左图右文、三列卡片、一排导航、按钮靠右，本质上都是布局问题。</p>
+                        </div>
+                    </div>
+                    <div class="compare-grid">
+                        <div class="compare-card">
+                            <h5>Flex 适合什么</h5>
+                            <p>适合一维排列，比如一排按钮、左右结构、水平或垂直分布。</p>
+                        </div>
+                        <div class="compare-card">
+                            <h5>Grid 适合什么</h5>
+                            <p>适合二维网格，比如卡片墙、仪表盘、复杂多列布局。</p>
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h5>Flex 布局例子</h5>
+                        <pre><code>.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}</code></pre>
+                    </div>
+                    <div class="example">
+                        <h5>Grid 布局例子</h5>
+                        <pre><code>.project-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}</code></pre>
+                    </div>
+                </section>
+
+                <section class="chapter" id="responsive">
+                    <div class="chapter-head">
+                        <span class="chapter-index">04</span>
+                        <div class="chapter-copy">
+                            <h4>响应式：让页面在手机和电脑上都可用</h4>
+                            <p>一个只适合电脑看的页面，在今天是不够用的。你需要让页面根据屏幕大小自动调整布局，同时保证文字可读、按钮可点。</p>
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h5>媒体查询例子</h5>
+                        <pre><code>@media (max-width: 768px) {
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+                    </div>
+                    <div class="checkpoint-box">
+                        <h5>响应式检查重点</h5>
+                        <ul class="item-list">
+                            <li>手机上文字是不是太小。</li>
+                            <li>卡片会不会挤到一行放不下。</li>
+                            <li>按钮点击区域够不够大。</li>
+                            <li>深色背景下文字是否仍然清楚。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="chapter" id="practice">
+                    <div class="chapter-head">
+                        <span class="chapter-index">05</span>
+                        <div class="chapter-copy">
+                            <h4>练习任务：把你的 HTML 骨架装修成完整主页</h4>
+                            <p>现在你可以把前一页写好的 HTML 骨架真正美化起来，让它像一个能展示给别人看的页面。</p>
+                        </div>
+                    </div>
+                    <div class="practice-box">
+                        <h5>建议至少练这些点</h5>
+                        <ul class="item-list">
+                            <li>设置页面背景色、标题字号、正文行高。</li>
+                            <li>把技能列表做成标签样式。</li>
+                            <li>把项目经历做成卡片网格。</li>
+                            <li>给联系按钮做 hover 效果。</li>
+                            <li>让页面在手机上也不乱。</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-nav">
+                        <a class="lesson-link" href="tutorial-html.html"><i class="ti ti-arrow-left"></i><span>返回：HTML 教程</span></a>
+                        <a class="lesson-link" href="tutorial-javascript.html"><i class="ti ti-bolt"></i><span>继续：JavaScript 教程</span></a>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+    <script src="tutorial.js"></script>
+</body>
+</html>
