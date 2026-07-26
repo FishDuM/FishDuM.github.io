@@ -1,13 +1,438 @@
 <!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FishPics · 架构设计图</title>
-    <script type="module" crossorigin src="/assets/index-Cg2SbiOI.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CCyylM3s.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<html lang="zh-CN" data-theme="cream">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>会飞的鱼 · FISH</title>
+<meta name="description" content="会飞的鱼（FISH）的个人网站。主力是 Java，前端 Vue、React、TypeScript 也能自己写，脚本用 Python。做过一个拆成十三个服务的内容社区，一个 AI 代码生成平台，还有几个小东西。">
+<meta name="author" content="会飞的鱼">
+<meta name="theme-color" content="#F2E3CF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="会飞的鱼 · FISH">
+<meta property="og:description" content="主力是 Java，前端 Vue、React、TypeScript 也能自己写，脚本用 Python。做过一个拆成十三个服务的内容社区、一个 AI 代码生成平台，还有几个小东西。">
+<meta property="og:url" content="https://www.ljx.hk/">
+<meta property="og:site_name" content="会飞的鱼">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.ljx.hk/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="会飞的鱼 · FISH 的个人网站">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.ljx.hk/assets/og.png">
+<link rel="canonical" href="https://www.ljx.hk/">
+<!-- 站标就是全站那个上圆下方的形状，内联 SVG，不额外发请求 -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F2E3CF'/%3E%3Cpath d='M8 26V14Q8 6 16 6Q24 6 24 14V26Z' fill='%23E35342'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="assets/js/main.js">
+<link rel="modulepreload" href="assets/js/ui.js">
+<link rel="modulepreload" href="assets/js/terminal.js">
+<link rel="stylesheet" href="assets/css/style.css">
+<!-- 只有确认脚本能跑，才允许把内容藏起来等动画点亮；
+     否则 JS 失效时整页正文会是空白的 -->
+<script>
+  (function () {
+    var r = document.documentElement;
+    r.classList.add('js');
+    try {
+      var t = localStorage.getItem('ljx.theme');
+      if (t === 'cream' || t === 'dusk') r.dataset.theme = t;
+      if (t === 'dusk') {
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.content = '#1C1814';
+      }
+    } catch (e) { /* 隐私模式下读不到，用默认配色即可 */ }
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "会飞的鱼",
+  "url": "https://www.ljx.hk/",
+  "alternateName": ["FISH", "FishDuM"],
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "广东理工学院" },
+  "knowsAbout": ["Java", "Spring Cloud", "Vue", "React", "TypeScript", "JavaScript", "Python", "分布式系统"],
+  "sameAs": ["https://github.com/FishDuM"]
+}
+</script>
+</head>
+<body>
+
+<nav class="nav" data-xray="nav">
+  <div class="nav__links">
+    <a href="#things">在做什么</a>
+    <a href="#about">关于</a>
+    <a href="#say">联系</a>
+    <button class="nav__toggle" type="button" data-theme-toggle aria-label="切换配色" aria-pressed="false">
+      <svg class="i-cream" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 14.6A8.4 8.4 0 0 1 9.4 3.6a8.4 8.4 0 1 0 11 11Z"/></svg>
+      <svg class="i-dusk" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============================ 首屏 ============================ -->
+  <header class="hero" id="hero">
+    <div class="wrap hero__inner">
+      <!-- 时间和后半句由脚本按广东时间实时改写；脚本没跑就是这句静态的 -->
+      <p class="hero__kicker" data-clock data-xray="clock">
+        <span>广东</span>
+        <span data-clock-time>GMT+8</span>
+        <span data-clock-mood>多半还醒着</span>
+      </p>
+
+      <h1 class="hero__title" data-xray="title">
+        <span class="row" data-split aria-label="会飞的鱼">会飞的鱼</span>
+        <span class="row row--red" data-split aria-label="FISH">FISH</span>
+      </h1>
+
+      <p class="hero__say">
+        代码应该<span class="mark">跑得稳</span>，也<span class="mark">读得懂</span>。
+      </p>
+
+      <p class="hero__meta">
+        <span>广东理工学院</span>
+        <span>计算机科学与技术</span>
+        <span>大四在读</span>
+      </p>
+    </div>
+
+    <!-- 站标那个「上圆下方」层层套起来放大，全站唯一的图形 -->
+    <div class="hero__mark" aria-hidden="true" data-parallax data-xray="mark">
+      <svg viewBox="0 0 440 600" fill="none">
+        <path d="M32 586 L32 224 A198 198 0 0 1 428 224 L428 586 Z" fill="var(--ink)"/>
+        <path d="M14 566 L14 204 A198 198 0 0 1 410 204 L410 566 Z" fill="var(--red)"
+              stroke="var(--ink)" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        <path d="M76 502 L76 208 A136 136 0 0 1 348 208 L348 502 Z" fill="var(--bg-hi)"
+              stroke="var(--ink)" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        <path d="M134 444 L134 212 A78 78 0 0 1 290 212 L290 444 Z" fill="var(--red-deep)"/>
+      </svg>
+    </div>
+
+    <!-- 纸雁群：这一只是母版，其余由脚本按人字形复制出来。
+         两片翅膀一深一浅，像纸对折之后的两面 -->
+    <div class="geese" data-geese data-xray="geese" aria-hidden="true">
+      <span class="goose">
+        <svg viewBox="0 0 64 44" fill="none">
+          <g class="goose__wings">
+            <path d="M22 21 L37 3 L48 21 Z" fill="var(--bg-hi)"
+                  stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+            <path d="M22 23 L37 41 L48 23 Z" fill="var(--red)"
+                  stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+          </g>
+          <path d="M8 18 L61 22 L8 26 L16 22 Z" fill="var(--ink)"/>
+        </svg>
+      </span>
+    </div>
+
+    <!-- 前四张任何屏幕都在，后四张按屏幕大小依次露出，最多八张 -->
+    <span class="sticker sticker--red s1" data-sticker data-xray="sticker">Java</span>
+    <span class="sticker sticker--green s2" data-sticker>分布式</span>
+    <span class="sticker s3" data-sticker>Spring Cloud</span>
+    <span class="sticker sticker--yellow s4" data-sticker>夜猫子</span>
+    <span class="sticker sticker--blue s5" data-sticker>React</span>
+    <span class="sticker s6" data-sticker>TypeScript</span>
+    <span class="sticker sticker--yellow s7" data-sticker>Python</span>
+    <span class="sticker sticker--red s8" data-sticker>Agent</span>
+
+    <p class="hero__hint">往下</p>
+  </header>
+
+  <!-- ============================ 跑马灯 ============================ -->
+  <!-- 外面这层专门裁掉跑马灯歪着放溢出的部分。
+       不能靠 body 的 overflow 兜，那会让整页变成滚动容器，作品区的 sticky 就废了 -->
+  <div class="marquee-clip">
+  <div class="marquee" aria-hidden="true" data-xray="marquee">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span>会飞的鱼</span><span>FISH</span><span>Java</span><span>Spring Cloud</span><span>Vue</span>
+        <span>React</span><span>TypeScript</span><span>Python</span>
+        <span>飞鱼社区</span><span>AI 代码生成</span><span>拆过轮子</span>
+        <span>夜猫子</span><span>广东</span>
+      </div>
+      <div class="marquee__group">
+        <span>会飞的鱼</span><span>FISH</span><span>Java</span><span>Spring Cloud</span><span>Vue</span>
+        <span>React</span><span>TypeScript</span><span>Python</span>
+        <span>飞鱼社区</span><span>AI 代码生成</span><span>拆过轮子</span>
+        <span>夜猫子</span><span>广东</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ============================ 信念 ============================ -->
+  <section class="section" id="beliefs">
+    <div class="wrap">
+      <div class="head rise">
+        <!-- 章题上的红笔迹：这一节进场时自己画出来 -->
+        <h2 class="head__title">三件我<span class="scrib scrib--ring" data-xray="scrib">认定<svg class="scrib__ink" viewBox="0 0 135 100" preserveAspectRatio="none" aria-hidden="true"
+          ><path pathLength="1" vector-effect="non-scaling-stroke"
+            d="M112 16C96 6 52 3 26 14 6 23 2 46 12 63c12 20 62 33 94 23 20-6 28-24 22-40-5-13-20-22-36-26"/></svg></span>的事</h2>
+        <p class="head__note">不是什么方法论，就是我写代码时真的会照着做的几条。</p>
+      </div>
+
+      <div class="beliefs">
+        <article class="belief rise" data-xray="belief">
+          <span class="belief__no">01</span>
+          <h3 class="belief__title">先跑起来，再谈优雅</h3>
+          <p class="belief__body">
+            一个能跑的粗糙版本，比一张完美的设计图有用。我习惯先让它通，
+            再回头把不体面的地方一处处收拾干净。
+          </p>
+          <span class="fold" data-fold tabindex="0" role="button" aria-label="掀开折角">
+            <span class="fold__note">这一页也是先跑起来，再收拾的</span>
+          </span>
+        </article>
+
+        <article class="belief rise">
+          <span class="belief__no">02</span>
+          <h3 class="belief__title">造过轮子，才知道轮子为什么是圆的</h3>
+          <p class="belief__body">
+            所以我把一个内容社区硬拆成了十三个服务，自己把分布式该踩的坑
+            挨个踩一遍。看别人写的总结，和自己半夜排查一次，不是一回事。
+          </p>
+          <span class="fold" data-fold tabindex="0" role="button" aria-label="掀开折角">
+            <span class="fold__note">圆之前先造方了几个</span>
+          </span>
+        </article>
+
+        <article class="belief rise">
+          <span class="belief__no">03</span>
+          <h3 class="belief__title">代码是写给人看的</h3>
+          <p class="belief__body">
+            机器只是顺便执行。变量名想了半天想不出来，通常说明这段逻辑
+            自己就没想清楚——这时候该改的是设计，不是名字。
+          </p>
+          <span class="fold" data-fold tabindex="0" role="button" aria-label="掀开折角">
+            <span class="fold__note">这段话改了不止一遍</span>
+          </span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 做过的东西 ============================ -->
+  <!-- 这一节换了一张纸：底色深一档，上下两条边由 CSS 遮罩撕开 -->
+  <section class="section section--paper" id="things">
+    <!-- 把这张纸夹在页面上的回形针，点一下会掉 -->
+    <span class="clip" data-clip data-xray="clip" role="button" tabindex="0" aria-label="取下回形针">
+      <svg viewBox="0 0 26 62" aria-hidden="true">
+        <path d="M8 46V14a5 5 0 0 1 10 0v36a7 7 0 0 1-14 0V12a9 9 0 0 1 18 0v30"/>
+      </svg>
+    </span>
+    <span class="clip__note" aria-hidden="true">纸条上什么都没写</span>
+
+    <div class="wrap">
+      <div class="head rise">
+        <h2 class="head__title">做过的<span class="scrib scrib--line">东西<svg class="scrib__ink" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true"
+          ><path pathLength="1" vector-effect="non-scaling-stroke" d="M5 8C48 2 122 3 195 9"/><path pathLength="1" vector-effect="non-scaling-stroke" d="M14 18C58 12 120 11 180 16"/></svg></span></h2>
+        <p class="head__note">代码都在 GitHub 上公开，想看细节直接点进去翻。</p>
+      </div>
+
+      <div class="works" data-xray="works">
+
+        <a class="work rise" href="https://github.com/FishDuM/fishhub" target="_blank" rel="noopener" data-repo="fishhub">
+          <span class="work__no">01</span>
+          <div>
+            <h3 class="work__name">飞鱼社区 <em>fishhub</em></h3>
+            <p class="work__desc">
+              一个内容社区的后端，按职责拆成十三个服务：网关、认证、用户、关系链、笔记、
+              搜索、对象存储、计数、发号器等，各自独立部署、彼此调用。
+            </p>
+            <p class="work__tags">
+              <span>Java 17</span><span>Spring Cloud Alibaba</span><span>Redis</span>
+              <span>RocketMQ</span><span>Elasticsearch</span>
+            </p>
+          </div>
+          <span class="work__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg></span>
+        </a>
+
+        <a class="work rise" href="https://github.com/FishDuM/fish-ai-code" target="_blank" rel="noopener" data-repo="fish-ai-code">
+          <span class="work__no">02</span>
+          <div>
+            <h3 class="work__name">AI 代码生成平台 <em>fish-ai-code</em></h3>
+            <p class="work__desc">
+              一句话说清想要什么，它自己判断该生成单页、多文件还是完整工程，
+              过程逐字流式吐出来，生成完能直接预览、打包下载。
+            </p>
+            <p class="work__tags">
+              <span>Java 21</span><span>LangChain4j</span><span>SSE 流式</span>
+              <span>React 19</span><span>TypeScript</span>
+            </p>
+          </div>
+          <span class="work__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg></span>
+        </a>
+
+        <a class="work rise" href="https://github.com/FishDuM/AI.Image.Material.Collaboration.Platform" target="_blank" rel="noopener" data-repo="fishpics">
+          <span class="work__no">03</span>
+          <div>
+            <h3 class="work__name">FishPics 素材协作平台 <em>fishpics</em></h3>
+            <p class="work__desc">
+              团队用的图片素材库：上传去重、空间与权限、分享链接，配了 AI 打标和文生图，
+              多个人能同时在一张图上改。
+            </p>
+            <p class="work__tags">
+              <span>Java 21</span><span>Redisson</span><span>WebSocket</span>
+              <span>腾讯云 COS</span><span>React 19</span>
+            </p>
+          </div>
+          <span class="work__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg></span>
+        </a>
+
+        <a class="work rise" href="https://github.com/FishDuM/PopWord" target="_blank" rel="noopener" data-repo="popword">
+          <span class="work__no">04</span>
+          <div>
+            <h3 class="work__name">PopWord 弹词 <em>popword</em></h3>
+            <p class="work__desc">
+              浏览器扩展。看网页的时候点一下就弹出一个单词并发音，进度和记录留在本地，
+              内置四六级到考研七套词库。
+            </p>
+            <p class="work__tags">
+              <span>Chrome MV3</span><span>原生 JavaScript</span><span>零构建</span>
+            </p>
+          </div>
+          <span class="work__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg></span>
+        </a>
+
+        <a class="work rise" href="https://github.com/FishDuM/TriPanel" target="_blank" rel="noopener" data-repo="tripanel">
+          <span class="work__no">05</span>
+          <div>
+            <h3 class="work__name">TriPanel 三分屏还原 <em>tripanel</em></h3>
+            <p class="work__desc">
+              把网课回放里的老师画面、课件和手写板书分别取回来，再逐帧重绘、
+              合成成一个能离线看的完整视频。
+            </p>
+            <p class="work__tags">
+              <span>Python</span><span>ffmpeg</span><span>Playwright</span><span>Pillow</span>
+            </p>
+          </div>
+          <span class="work__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 关于 ============================ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="head rise">
+        <h2 class="head__title">关于<span class="scrib scrib--star">我<svg class="scrib__ink" viewBox="0 0 40 40" preserveAspectRatio="none" aria-hidden="true"
+          ><path pathLength="1" vector-effect="non-scaling-stroke" d="M20 4v13"/><path pathLength="1" vector-effect="non-scaling-stroke" d="M6 30l10-6"/><path pathLength="1" vector-effect="non-scaling-stroke" d="M34 30l-10-6"/></svg></span></h2>
+      </div>
+
+      <div class="about">
+        <div class="about__text rise">
+          <p>
+            我在广东理工学院念计算机，现在大四。主力是 <b>Java</b>，
+            从服务怎么拆到中间件怎么选，基本都自己趟过一遍。
+          </p>
+          <p>
+            前端不靠别人：<b>Vue</b>、<b>React</b>、<b>TypeScript</b> 都写过完整的东西，
+            要临时写点脚本就上 <b>Python</b>。最近在折腾 <b>Agent</b> 那一摊。
+          </p>
+          <p>
+            喜欢把一件事从零做到真的能跑起来，中间该踩的坑一个都不绕开——
+            绕开了，做完也不知道自己到底会了什么。
+          </p>
+        </div>
+
+        <aside class="wants rise">
+          <h3 class="wants__title">最近在琢磨</h3>
+          <ul>
+            <li>分布式里那些坑，怎么讲才能让人听懂</li>
+            <li>大模型的编排到底该怎么设计才不别扭</li>
+            <li>前端动画的手感究竟是从哪几个参数来的</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 联系 ============================ -->
+  <section class="section" id="say">
+    <div class="wrap">
+      <div class="contact rise">
+        <!-- 复制成功时盖下来的邮戳，日期是当天的 -->
+        <span class="stamp" data-stamp aria-hidden="true">
+          <span>已抄下</span>
+          <b data-stamp-date>· · ·</b>
+        </span>
+        <h2 class="contact__title">想<span class="scrib scrib--line">聊点什么<svg class="scrib__ink" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true"
+          ><path pathLength="1" vector-effect="non-scaling-stroke" d="M5 8C48 2 122 3 195 9"/><path pathLength="1" vector-effect="non-scaling-stroke" d="M14 18C58 12 120 11 180 16"/></svg></span>？</h2>
+        <p class="contact__sub">
+          技术、项目、或者纯粹想问一句"你那个鱼是怎么回事"，都可以。点一下就复制。
+        </p>
+
+        <div class="lines">
+          <a class="line" href="https://github.com/FishDuM" target="_blank" rel="noopener" data-repo="github">
+            <span class="line__key">GitHub</span>
+            <span class="line__val">github.com/FishDuM</span>
+            <span class="line__act">打开</span>
+          </a>
+          <button class="line" type="button" data-copy="fish.java.react@gmail.com">
+            <span class="line__key">邮箱</span>
+            <span class="line__val">fish.java.react@gmail.com</span>
+            <span class="line__act" data-copy-hint>复制</span>
+          </button>
+          <button class="line" type="button" data-copy="ljx.love.you@qq.com">
+            <span class="line__key">另一个</span>
+            <span class="line__val">ljx.love.you@qq.com</span>
+            <span class="line__act" data-copy-hint>复制</span>
+          </button>
+          <button class="line" type="button" data-copy="3057433102">
+            <span class="line__key">QQ</span>
+            <span class="line__val">3057433102</span>
+            <span class="line__act" data-copy-hint>复制</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 书脊：一根随滚动一点点画出来的线，把下半页的四节串成一本书。
+       每到一节打一个结，结也是目录，点了就跳过去。
+       起止两头和每个结的位置都由脚本量，屏幕窄了整根收起来 -->
+  <div class="thread" data-thread data-xray="thread">
+    <svg aria-hidden="true" focusable="false">
+      <path class="thread__track" pathLength="1"/>
+      <path class="thread__ink" pathLength="1"/>
+    </svg>
+    <button class="thread__knot" type="button" data-to="#beliefs" aria-label="跳到 三件我认定的事"><b>01</b></button>
+    <button class="thread__knot" type="button" data-to="#things" aria-label="跳到 做过的东西"><b>02</b></button>
+    <button class="thread__knot" type="button" data-to="#about" aria-label="跳到 关于我"><b>03</b></button>
+    <button class="thread__knot" type="button" data-to="#say" aria-label="跳到 想聊点什么"><b>04</b></button>
+  </div>
+
+</main>
+
+<footer class="foot">
+    <div class="wrap foot__inner">
+      <!-- 年份由脚本按广东时间改写，这里的数字只是脚本没跑时的兜底 -->
+      <span>会飞的鱼 · <span data-year>2026</span></span>
+      <span class="foot__hint">连续敲 <b>fish</b> 唤终端 · 按 <b>~</b> 把这页拆开看</span>
+    </div>
+</footer>
+
+<div class="term" role="dialog" aria-label="终端" aria-modal="true">
+  <div class="term__box">
+    <div class="term__bar">
+      <i class="term__dot term__dot--live"></i>
+      <i class="term__dot"></i>
+      <i class="term__dot"></i>
+      <span>ljx@home</span>
+      <button class="term__x" type="button">关闭</button>
+    </div>
+    <div class="term__body" role="log" aria-live="polite"></div>
+    <label class="term__prompt">
+      <span class="term__sigil">&gt;</span>
+      <input class="term__input" type="text" autocomplete="off" autocapitalize="off"
+             spellcheck="false" aria-label="终端输入">
+    </label>
+  </div>
+</div>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
 </html>
