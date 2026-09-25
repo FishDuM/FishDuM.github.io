@@ -230,22 +230,21 @@ export function initCounts() {
   els.forEach((el) => io.observe(el));
 }
 
-/* --- 导航：下滚收起，上滚露出 ---------------------------------------------- */
+/* --- 导航：通栏收缩为悬浮胶囊 ---------------------------------------------- */
 
 export function initNav() {
   const nav = document.querySelector('[data-nav]');
   if (!nav) return;
-  let last = scrollY;
   let ticking = false;
+
+  const update = () => nav.classList.toggle('is-docked', scrollY > 20);
+  update();
 
   addEventListener('scroll', () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const y = scrollY;
-      nav.classList.toggle('is-stuck', y > 40);
-      nav.classList.toggle('is-hidden', y > last && y > 260);
-      last = y;
+      update();
       ticking = false;
     });
   }, { passive: true });

@@ -48,18 +48,21 @@
 <!-- 固定的海洋层：光柱、气泡、雪、浮游生物和那条鱼都画在这里，压在正文底下 -->
 <canvas class="sea" data-sea aria-hidden="true"></canvas>
 
-<nav class="nav" data-nav>
-  <a class="nav__mark" href="#top">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 17c2.4-4.6 7.2-7.4 11.6-6.2 3 .8 5 2.7 6.4 5-1.4 2.3-3.4 4.2-6.4 5-4.4 1.2-9.2-1.6-11.6-6.2Z" fill="currentColor"/><path d="M22.5 12.5 28 9.5v15l-5.5-3Z" fill="currentColor"/></svg>
-    <span>会飞的鱼</span>
-  </a>
-  <div class="nav__links">
-    <a href="#intro">在做什么</a>
-    <a href="#works">做过的东西</a>
-    <a href="#beliefs">认定的事</a>
-    <a href="#say">联系</a>
-  </div>
-</nav>
+<div class="nav-shell" data-nav-shell>
+  <nav class="nav nav-card" data-nav>
+    <span class="nav-bg" aria-hidden="true"></span>
+    <a class="nav__mark" href="#top">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 17c2.4-4.6 7.2-7.4 11.6-6.2 3 .8 5 2.7 6.4 5-1.4 2.3-3.4 4.2-6.4 5-4.4 1.2-9.2-1.6-11.6-6.2Z" fill="currentColor"/><path d="M22.5 12.5 28 9.5v15l-5.5-3Z" fill="currentColor"/></svg>
+      <span>会飞的鱼</span>
+    </a>
+    <div class="nav__links">
+      <a href="#intro">在做什么</a>
+      <a href="#works">做过的东西</a>
+      <a href="#beliefs">认定的事</a>
+      <a href="#say">联系</a>
+    </div>
+  </nav>
+</div>
 
 <!-- 深度表：桌面端是左侧的标尺，手机端缩成左下角一块小读数 -->
 <div class="gauge" data-gauge aria-hidden="true">
