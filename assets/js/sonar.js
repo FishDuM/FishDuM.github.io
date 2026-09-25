@@ -1,18 +1,19 @@
-/* 终端彩蛋：连续敲 fish 唤起
+/* 声呐终端：连续敲 fish 唤起
    内容实时读自页面 DOM，改了页面文案终端里跟着变 */
 
-import {
-  setTheme, burst, clockNow, visitorNote, resetStickers, toggleXray, stats,
-} from './ui.js';
+import { sea, seaStats } from './ocean.js';
+import { clockNow, visitorNote, env } from './site.js';
 
 /* source 能读的文件白名单。这站没有构建步骤，
    浏览器拿到的就是仓库里那一份，所以打印出来的确实是源码本身 */
 const SOURCES = [
   'index.html',
+  '404.html',
   'assets/css/style.css',
   'assets/js/main.js',
-  'assets/js/ui.js',
-  'assets/js/terminal.js',
+  'assets/js/ocean.js',
+  'assets/js/site.js',
+  'assets/js/sonar.js',
 ];
 
 const GH_USER = 'FishDuM';
@@ -33,10 +34,10 @@ const FISH = String.raw`
       \__________/
 `;
 
-export function initTerminal() {
-  const el = document.querySelector('.term');
-  const body = el?.querySelector('.term__body');
-  const input = el?.querySelector('.term__input');
+export function initSonar() {
+  const el = document.querySelector('.sonar');
+  const body = el?.querySelector('.sonar__body');
+  const input = el?.querySelector('.sonar__input');
   if (!el || !body || !input) return;
 
   let buffer = [];
@@ -57,7 +58,7 @@ export function initTerminal() {
     if (buffer.join('') === KEY.join('')) { buffer = []; open(); }
   });
 
-  el.querySelector('.term__x')?.addEventListener('click', close);
+  el.querySelector('.sonar__x')?.addEventListener('click', close);
 
   input.addEventListener('keydown', (e) => {
     /* 输入法合成态里的回车是选词，不是提交 */
@@ -88,11 +89,11 @@ export function initTerminal() {
     for (const n of outside()) n.inert = true;
 
     if (!body.childElementCount) {
-      print('你找到了。这里可以敲命令，<b>help</b> 看有哪些，<b>exit</b> 出去。');
+      print('声呐接通。这里可以敲命令，<b>help</b> 看有哪些，<b>exit</b> 浮出去。');
       print('');
     }
     setTimeout(() => input.focus(), 60);
-    burst(innerWidth / 2, innerHeight / 2, 18);
+    sea.ping(innerWidth / 2, innerHeight / 2, true);
   }
 
   function close() {
@@ -121,7 +122,7 @@ export function initTerminal() {
 
   function print(html = '') {
     const line = document.createElement('span');
-    line.className = 'term__line';
+    line.className = 'sonar__line';
     line.innerHTML = html;
     body.appendChild(line);
     body.scrollTop = body.scrollHeight;
@@ -140,7 +141,7 @@ export function initTerminal() {
   const sections = () =>
     [...document.querySelectorAll('section[id], header[id]')].map((s) => ({
       id: s.id,
-      title: (s.querySelector('.head__title') || s.querySelector('.contact__title'))
+      title: (s.querySelector('.head__title') || s.querySelector('.hero__title'))
         ?.textContent?.trim() || s.id,
       node: s,
     }));
@@ -148,7 +149,7 @@ export function initTerminal() {
   /* innerText 只在已渲染的节点上才按版式换行，所以先把副本临时挂进文档 */
   function textOf(node) {
     const clone = node.cloneNode(true);
-    clone.querySelectorAll('svg, script, .sticker').forEach((n) => n.remove());
+    clone.querySelectorAll('svg, script').forEach((n) => n.remove());
     clone.style.cssText = 'position:absolute;left:-9999px;top:0;width:600px';
     document.body.appendChild(clone);
     const text = clone.innerText;
@@ -159,33 +160,39 @@ export function initTerminal() {
   /* 用无原型对象，避免 toString / constructor 这类输入命中原型链 */
   const commands = Object.assign(Object.create(null), {
     help() {
-      print('  <b>ls</b>              列出页面上的章节');
-      print('  <b>cat</b> &lt;章节&gt;      打印该章节的全部文字');
+      print('  <b>ls</b>              列出页面上的海域');
+      print('  <b>dive</b> &lt;海域&gt;   潜到某一节');
+      print('  <b>cat</b> &lt;海域&gt;      打印该海域的全部文字');
       print('  <b>open</b> &lt;名字&gt;     在新标签打开某个仓库');
       print('  <b>whoami</b>          我是谁');
       print('  <b>time</b>            两边各自几点');
       print('  <b>source</b> [文件]   打印这个站自己的源码');
       print('  <b>git</b>             我最近推了什么');
-      print('  <b>stats</b>           你在这页干了些什么');
-      print('  <b>xray</b>            透视模式（也可以直接按 ~）');
+      print('  <b>stats</b>           你在这片海干了些什么');
+      print('  <b>ping</b>            发一次声呐（会响的那种）');
       print('  <b>fish</b>            画条鱼');
-      print('  <b>theme</b>           换配色');
-      print('  <b>reset</b>           把贴纸放回原位');
       print('  <b>clear</b>           清屏');
-      print('  <b>exit</b>            出去（或按 Esc）');
+      print('  <b>exit</b>            浮出去（或按 Esc）');
     },
 
     ls() {
       const list = sections();
-      /* 404 这类页面一个带 id 的章节都没有，不能只回一个空行 */
-      if (!list.length) return print('这一页没有可以列的章节，回首页试试。');
+      if (!list.length) return print('这一页没有可以列的海域。');
       for (const s of list) print(`  <i>${esc(s.id.padEnd(10))}</i> <u>${esc(s.title)}</u>`);
     },
 
-    cat(arg) {
-      if (!arg) return print('用法：cat &lt;章节&gt;，先用 <b>ls</b> 看有哪些');
+    dive(arg) {
+      if (!arg) return print('用法：dive &lt;海域&gt;，先用 <b>ls</b> 看有哪些');
       const s = sections().find((x) => x.id === arg);
-      if (!s) return print(`没有叫 <i>${esc(arg)}</i> 的章节`);
+      if (!s) return print(`没有叫 <i>${esc(arg)}</i> 的海域`);
+      print(`下潜到 <u>${esc(arg)}</u>`);
+      s.node.scrollIntoView({ behavior: env.reduced ? 'auto' : 'smooth', block: 'start' });
+    },
+
+    cat(arg) {
+      if (!arg) return print('用法：cat &lt;海域&gt;，先用 <b>ls</b> 看有哪些');
+      const s = sections().find((x) => x.id === arg);
+      if (!s) return print(`没有叫 <i>${esc(arg)}</i> 的海域`);
       print(esc(textOf(s.node)));
     },
 
@@ -206,13 +213,13 @@ export function initTerminal() {
       const info = [
         ['名字', '会飞的鱼 · FISH'],
         ['学校', '广东理工学院 · 计算机科学与技术'],
-        ['年级', '大四'],
+        ['在职', '广州北山信息科技有限公司'],
         ['主力', 'Java'],
         ['也写', 'Vue / React / TypeScript / Python'],
         ['最近', '在折腾 Agent'],
         ['此刻', `${now.hhmm}，${now.mood}`],
         ['代码', 'github.com/FishDuM'],
-        ['这个站', '手写，没有界面框架'],
+        ['这个站', '手写，没有界面框架，一条鱼游到底'],
       ];
       for (const [k, v] of info) print(`  <b>${esc(k.padEnd(6))}</b> <u>${esc(v)}</u>`);
     },
@@ -247,7 +254,6 @@ export function initTerminal() {
         const lines = text.split('\n');
         print(`  <i>${lines.length} 行，${new Blob([text]).size} 字节</i>`);
         print('');
-        /* 行号右对齐，读起来像个正经的分页器 */
         const w = String(lines.length).length;
         for (let i = 0; i < lines.length; i++) {
           print(`<u>${String(i + 1).padStart(w)}</u>  ${esc(lines[i])}`);
@@ -258,8 +264,6 @@ export function initTerminal() {
     },
 
     async git() {
-      /* 缓存的是已经解析好的那几行，不是原始响应——
-         否则每次敲 git 都要把下面那几个提交请求重打一遍 */
       let rows = null;
       try {
         const hit = JSON.parse(localStorage.getItem(GH_CACHE) || 'null');
@@ -277,8 +281,7 @@ export function initTerminal() {
             .filter((e) => e.type === 'PushEvent' && e.payload?.head && e.repo?.name);
           if (!pushes.length) return print('最近没有公开的提交记录。');
 
-          /* 事件流里只给 head 的 sha，不给提交信息，得逐个再问一次。
-             一个仓库只问最近那一次，最多四个请求，别把匿名额度烧光 */
+          /* 一个仓库只问最近那一次，最多四个请求，别把匿名额度烧光 */
           const seen = new Set();
           const picks = [];
           for (const e of pushes) {
@@ -302,7 +305,6 @@ export function initTerminal() {
           rows = picks.map((p, i) => ({
             at: p.at,
             name: p.repo.split('/').pop(),
-            /* 拿不到提交信息就退回分支名，总比空一行强 */
             msg: msgs[i] ? msgs[i].slice(0, 50) : `推到 ${p.ref}`,
           }));
 
@@ -328,21 +330,16 @@ export function initTerminal() {
       const min = Math.floor(sec / 60);
       /* CSS 像素名义上是 1/96 英寸，换算出来的"米"当然不严谨，图一乐 */
       const metres = (stats.scrolled / 3779.5).toFixed(1);
-      print(`  你在这页待了 <b>${min ? `${min} 分 ` : ''}${sec % 60} 秒</b>`);
-      print(`  一共滚了 <b>${metres}</b> 米`);
-      print(`  迸出 <b>${stats.bits}</b> 片纸屑，戳过 <b>${stats.hits}</b> 个字`);
-      print(`  这是你第 <b>${stats.visits}</b> 次来`);
+      print(`  你在这片海待了 <b>${min ? `${min} 分 ` : ''}${sec % 60} 秒</b>`);
+      print(`  一共游了 <b>${metres}</b> 米`);
+      print(`  冒出 <b>${seaStats.bubbles}</b> 个气泡，发出 <b>${seaStats.pings}</b> 次声呐`);
+      print(`  那条鱼跃出水面 <b>${seaStats.leaps}</b> 次`);
+      print(`  这是你第 <b>${stats.visits}</b> 次下潜`);
     },
 
-    xray() {
-      if (!toggleXray(true)) return print('这一页没有可以拆的东西。');
-      close();
-      print('');
-    },
-
-    reset() {
-      if (resetStickers()) print('贴纸都回原位了。');
-      else print('这页没有贴纸可以复位。');
+    ping() {
+      sea.ping(innerWidth / 2, innerHeight / 2, true);
+      print('  声呐发出去了。听，是海的样子。');
     },
 
     fish() {
@@ -350,17 +347,9 @@ export function initTerminal() {
       print('  <i>FishDuM</i>');
     },
 
-    theme(arg) {
-      const next = arg === 'cream' || arg === 'dusk'
-        ? arg
-        : document.documentElement.dataset.theme === 'dusk' ? 'cream' : 'dusk';
-      setTheme(next);
-      print(`换成 <i>${next === 'dusk' ? '夜色' : '奶油'}</i> 了`);
-    },
-
     clear() { body.innerHTML = ''; },
     exit() { close(); },
-    sudo() { print('这儿没什么需要提权的。'); },
+    sudo() { print('海底不需要提权。'); },
   });
 
   /* source 和 git 要发请求，所以整条链路是异步的；
@@ -382,4 +371,22 @@ export function initTerminal() {
     }
     print('');
   }
+}
+
+/* stats 的计数器放在模块级，initSonar 每次进来都从同一份读 */
+const stats = { t0: performance.now(), scrolled: 0, visits: 1 };
+export { stats };
+
+export function trackScroll() {
+  let last = scrollY;
+  addEventListener('scroll', () => {
+    stats.scrolled += Math.abs(scrollY - last);
+    last = scrollY;
+  }, { passive: true });
+
+  try {
+    const seen = parseInt(localStorage.getItem('ljx.visits') || '0', 10);
+    stats.visits = (Number.isFinite(seen) && seen > 0 ? seen : 0) + 1;
+    localStorage.setItem('ljx.visits', String(stats.visits));
+  } catch { /* 记不住就算了 */ }
 }

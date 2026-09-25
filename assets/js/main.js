@@ -1,11 +1,8 @@
 /* 引导：每一步单独兜底，任何一处出问题都不该让后面的全部停摆 */
 
-import {
-  initTheme, initClock, splitAll, initWave, playHero, initReveal, initMarquee,
-  initNav, initStickers, initPress, initCopy, initParallax, initStats, initXray,
-  initGeese, initFolds, initMarks, initClip, initThread,
-} from './ui.js';
-import { initTerminal } from './terminal.js';
+import { initOcean } from './ocean.js';
+import { initClock, initGauge, initReveal, initCounts, initNav, initCopy } from './site.js';
+import { initSonar, trackScroll } from './sonar.js';
 
 function run(label, fn) {
   try {
@@ -16,35 +13,15 @@ function run(label, fn) {
 }
 
 function boot() {
-  run('theme', initTheme);
+  run('ocean', initOcean);   /* 先把画布跑起来，别的模块要往里冒泡 */
   run('clock', initClock);
-  run('split', splitAll);
-  run('wave', initWave);      /* 必须排在 split 之后，它靠的就是拆出来的那些字 */
+  run('gauge', initGauge);
   run('reveal', initReveal);
-  run('marquee', initMarquee);
+  run('counts', initCounts);
   run('nav', initNav);
-  run('stickers', initStickers);
-  run('press', initPress);
-  run('folds', initFolds);
-  run('marks', initMarks);
-  run('clip', initClip);
   run('copy', initCopy);
-  run('parallax', initParallax);
-  run('geese', initGeese);
-  run('thread', initThread);  /* 要量整页的高度，排在会改变布局的那些之后 */
-  run('stats', initStats);
-  run('xray', initXray);      /* 要排在 split 之后，标签里报的是拆出来的字数 */
-  run('terminal', initTerminal);
-
-  /* 字体就位后再放首屏动画以免字形跳动，但绝不能被卡住的字体请求无限期扣押 */
-  let started = false;
-  const start = () => {
-    if (started) return;
-    started = true;
-    playHero();
-  };
-  setTimeout(start, 900);
-  document.fonts?.ready.then(() => setTimeout(start, 60)).catch(start);
+  run('scroll-stat', trackScroll);
+  run('sonar', initSonar);
 }
 
 if (document.readyState === 'loading') {
